@@ -1,8 +1,9 @@
-nums = [1,2,3,4,5]
-print(len(nums))
-
-print("For loop:")
-for i in range (1,len(nums)):
-    print(i)
-
-
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        dp = [0] * len(nums)
+        dp[0] = nums[0]
+        
+        for i in range(1,len(nums)):
+            dp[i] = max(dp[i-1] + nums[i], nums[i])
+            
+        return max(dp)
