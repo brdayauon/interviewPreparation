@@ -1,3 +1,11 @@
-nums = [1,2,3,1]
-for i in range(1,len(nums)):
-    print(i)
+class Solution:
+    def rob(self, nums: List[int]) -> int:
+        prevMax = 0
+        currMax = 0
+        
+        for i in nums:
+            prevMax, currMax = max(currMax + i, prevMax), prevMax
+            
+        return prevMax
+        
+        
