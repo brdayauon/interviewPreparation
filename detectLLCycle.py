@@ -15,7 +15,7 @@ class Solution(object):
 
         if slow == fast:
             return True
-    return False
+    return False 
 
 testHead = ListNode(4)
 node1 = ListNode(3)
