@@ -1,0 +1,5 @@
+Arrays:
+
+    If two arrays:
+        Check array sizes and use a hashmap for the smaller array. It will reduce memory
+        usage when one of the arrays is very large.
