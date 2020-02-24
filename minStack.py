@@ -8,7 +8,7 @@ class MinStack:
 
     def push(self, x: int) -> None:
         self.stack.append(x)
-
+    #da
     def pop(self) -> None:
         self.stack.pop()
 
