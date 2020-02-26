@@ -1,0 +1,307 @@
+def Taxi Example 
+
+Performance:
+		safe, fast, legal, comfortable, trip, maximize profits
+
+Environment:
+		Roadsm other traffic, pedestrians, customers 
+
+Actuators:
+		Steering, accelerator, brake, signal, horn, display
+
+Sensors:
+		Camera, sonar, speedometer, gps, odometer, engine sensors, keyboard, accelerator
+
+
+def Medical Diagnosis System
+
+Performance: 
+
+		healthy patient, minimize costs, lawsuits
+
+Environment: 
+
+		patient, hospital, staff 
+
+Actuators: 
+
+		display, questions, tests, diagnosis, treatments, referral
+
+Sensors:
+		keyboard entry of symptoms, findings, patient’s answer
+
+#what is an agent?
+An agent is anything that can be viewed as
+perceiving its environment through sensors and
+acting upon that environment through actuators
+/////////////////////////////////////////
+//Rationality: 
+An agent should "do the right thing", based on what it can
+perceive and the actions it can perform. The right action is the
+one that will cause the agent to be most successful
+
+//Performance measure: An objective criterion for success of an
+//!agent's behavior
+Example: Amount of dirt cleaned within certain time
+■ +1 credit for each clean square per unit time
+
+General rule: measure what one wants rather than how one
+thinks the agent should behave
+
+//def rational Agent:
+For each possible percept sequence, a rational
+agent should select an action that is expected to
+maximize its performance measure, given the
+evidence provided by the percept sequence and
+whatever built-in knowledge the agent has.
+
+
+Informed = use problem - specfici knowledge 
+Which search strategies? 
+	Best first search and its variants
+
+Local search and optimization-
+	*hill climbing
+	*local beam search, genetic algorithms
+	*local search in continuous spaces
+
+A strategy is defined by picking the *order of node expansion*
+
+BEST FIRST SEARCH- 
+	General approach of Informed search:
+
+	: best first search: node is selected for expansion based on an evaluation function f(n)
+
+	***A STAR SEARCH*** 
+	Best known form of best-first search. 
+	IDEA: avoid expanding paths that are already expensive
+
+	Evaluation function f(n) = g(n) + h(n)
+	/ g(n) the cost (so far) to reach the node
+
+	/ h(n) estimated cost to get from the node to the goal
+	/ f(n) estimated total cost of path through n to goal
+
+
+	USES ADMISSIBLE HEURISTIC.
+
+
+5 components of that problem 13:30
+Problem: 5 components 
+1. Initial State 
+2. Transition Model
+3. Goal tests
+4. actions
+5. Path Cost 
+
+
+ ----- General Tree Search Algorithm -----
+ 	Stack - DFS 
+ 	Queue - BFS 
+
+ 	Frontier (initially take initial state)
+ 	if frontier is empty - we pulled everything in search 
+ else:
+ 		chose leaf node and remove from frontier 
+
+ 	if node contains goal state
+
+
+ 	While frontier not /empty 
+
+ 		pull node from frontier 
+
+ 		check if null state 
+
+ 	if check if goal state is in node
+ 		return the sequence of actions to get from init to goal 
+
+
+ 	GENERATE all possible successors states from problem into nodes. 
+ 	add nodes to frontier 
+
+ 	return FAILURE 
+
+
+
+ ------ Uniformed Search Strategies -------
+ 																			// b = branching Factor 
+ 																			// d = depth of solution (goal)
+ 																			// m = max depth of the search tree 
+
+ 		Complete 						Optimal 			Complex(t)       // Completeness: it will find the goal
+ 																			 // Optimality: Find shortest path (must be simple)
+
+ BFS -   Yes (b is infinite)		Yes	(step cost const)	O(bd)
+
+
+ DFS  -	 No 						No 						O(bm)
+
+
+ DLS (depth limited search)-	 No 						No 						O(b^L)
+
+ IDS (iterative deepening DF - search) -   Yes						Yes (if step Cost  		O(bd)
+ 									on non decreasing 
+ 									function of dept)
+
+
+ DFS - NOT EFFICIENT SPACE WISE (back tracking)  #iteration or recursion#
+
+ 	Till hit node then back up 
+
+ BTS (back tracking search) - No  		No 				O(bm)   <- SAME AS DFS 
+
+ Uniform Cost Search - 		Yes 		Yes 
+
+
+
+ ----- Informed Search Strategies -----
+
+ 	* has problem specific info outside of the problem definition
+ 	* more efficient (in space and speed)
+
+
+ 	BEST FIRST SEARCH STRATEGIES // GREEDY SEARCH AND A*  //
+
+ 												// BFSearch(problem, heuristic) #best first search
+
+ 												heuristic - h(n): estimated cost to goal from n at the goal, h(n) = 0
+
+ 												f(n) - eval function = g(n) //UCS (uniform cost search)
+ 																	   h(n) //GREEDY 
+ 																	   g(n) + h(n) //A*
+
+
+ UCS  - Yes 		Yes 		O(b^m)
+
+ Greedy - Not       Not 		
+
+ A* -  Yes 			Yes // WITH PROOPER h(n)
+
+ TF conceptual stuff // Is a* complete or optimal 
+
+
+
+ A* - f(n) - eval function =   g(n) //UCS (uniform cost search)
+							   h(n) //GREEDY 
+							   g(n) + h(n) //A*
+
+A heuristic is admissible if for every node n, h(n) <= h*(n), where h*(n) is the actual shortest cost to reach the goal from n.
+
+Theorem: if H is admissible, A* using TreeSearch is optimal. 
+
+
+Consistent heuristic: 
+	h is consistent if for every node n, and every successor of n, n', generated by action a, h(n) <= c(n,a,n') + h(n')  '
+
+
+	h(n) <= c + h(n')  						'
+	Theorem: A* using graph-search is optimal if n is consistent
+
+
+
+
+--- Uninformed and Informed Searches ---
+
+Local Search: - Don't know what goal is'
+	*how we got to goal (seq. actions) doesn't matter'   N X N with n queens 
+	Y - objective function 
+	x - states 
+
+	local min?
+
+
+
+
+///	self  (Function Hill - Climbing ) ///
+
+
+1- Stochastic hill climbing
+2- First- choice hill climbing
+3- Random Restart hill climbing
+4- Local Beam
+5- Simulated Annealing
+
+
+Stochastic hill climbing:
+	- chooses at random from all uphill moves
+	- Converges on a solution slowly
+
+First - choice hill climbing:
+	- generate successors and choose the first better move
+	- good with large branching facter *may ascent* / *Gradient descent*
+
+Random Restart hill climbing: 
+	- Conduct a series of hill climbing searches 
+	- when you reach a local max(or min)
+	- It complete with a probability approaching 
+			h.c probability of success = p
+			restarts = 1/p
+
+
+
+
+np hard problems. 
+Purely random walk. (considered complete)
+
+1- Simulated annealing 
+	(shed(t) -> T) decay function
+		if t = 0 then we got what we can.. 
+
+		for i in t = 1 to infinity:
+			goalTest(current)
+			T <- schedule[t] 
+
+			if t == 0:
+				return current 
+			next = a random successor 
+
+			if (delta E -> 0): 			--- Delta E = value(next) - value(cuurent)					
+				current = next 				if next is worse than current DELTA E < 0
+			else: 
+				current = next   		--- e(DELTAE/T)  1/e(DELTAE/T)  [small e because it has a nice distribution]
+
+
+2- Local Beam Search 
+	Idea: keep track of k states    		-- stochastic bc generating k random states 
+
+		  - start with k randomly chosen (current k states) states 
+		  - At each iteration all of the successors are evaluated.
+		  	- if any are the goal, return it 
+		  	- choose k best successors to replace current 
+
+* Look at problems and understand 
+
+	Implement simulated annealing?? 
+
+Genetic Algorithms:
+			[        ]  - collection of nodes 
+
+		[      ]        [       ]
+			-	two parents -
+
+			[ half elements are from one of the arrays and the other from the other parent]   <- children  
+
+1- selection ( % of fittest population )
+2- crossover   n index 0 -> n-1 
+			   random[1,n-2]
+			   random (n-2) + 1
+
+3- mutation (prob of mutation[mutation rate]) 
+	in child, choose random elem, set to random permis. Val 
+
+	Select an element at random and change it to a legal random value.
+
+	Pick value between [0,1] then if it not at threshhold, mutate val
+
+
+
+
+
+
+
+
+
+
+
+
