@@ -17,7 +17,11 @@ def compareTriplets(a, b):
             bob += 1 
     
     return alice,bob
+<<<<<<< HEAD
     #asjdld
+=======
+    #asjdl
+>>>>>>> 976c91389ebccaf2a754b57a4f547fc184273276
 
 
 if __name__ == '__main__':
